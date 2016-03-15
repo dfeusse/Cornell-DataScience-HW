@@ -2,30 +2,27 @@
 # EDIT INFO BELOW
 # -----------------------------------------------
 
-# RUN THIS IN YOUR TERMINAL
-# sudo pip install python-instagram
-
 # FILL IN YOUR COMPANIES EXACT NAMES
 
 brands = ['Groceries Apparel', 'James Perse', 'Acne Studios', 'APC', 'Death To Tennis', 
 	'Elizabeth Suzann', 'Orley', 'Wool & Prince']
 
-# FIND IN INSTAGRAM ACCOUNT INFO
+# FIND YOUR INSTAGRAM ACCOUNT INFO (CLIENT_ID, etc)
 # https://www.instagram.com/developer/
 
-CLIENT_ID = 'a2bcad5de7ab400eb16b7cc8d2ff0d24'
-CLIENT_SECRET = '4a0b191e4c8a4c71be5bfa60328f4e3c'
-
 # RUN get_access_token.py
-# ENTER access token BELOW
+# ENTER ACCT INFO TO GET YOUR ACCESS TOKEN
+# ENTER YOUR ACCESS BELOW AS A STRING
 
-ACCESS_TOKEN = '225686819.a2bcad5.ebe2686bcb5c48aa95097c521e307f84'
+ACCESS_TOKEN = ''
 
 # -----------------------------------------------
 # -----------------------------------------------
 
-# ----------- SCRIPT BELOW SHOULD RUN -----------
+# ----------- SCRIPT BELOW SHOULD JUST RUN -----------
 import requests
+import numpy as np
+import pandas as pd
 
 baseUrl = 'https://api.instagram.com/v1/'
 
@@ -77,7 +74,17 @@ for brand in brands:
 print allIds
 print allBrandDict
 
-# ---------- Get data for each brand
+# Export to csv
+df = pd.DataFrame(allBrandDict)
+print df
 
-# number of followers
-#numberFollowers = 'users/' + ID + '?access_token=' + ACCESS_TOKEN
+# Rearrange columns
+cols = list(df)
+# move the column to head of list using index, pop and insert
+cols.insert(0, cols.pop(cols.index('name')))
+# use ix to reorder
+df = df.ix[:, cols]
+print df
+
+# Ouput to a csv
+df.to_csv('insta_data.csv')

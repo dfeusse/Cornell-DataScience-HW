@@ -1,2 +1,6 @@
 access token: 
 (u'225686819.a2bcad5.ebe2686bcb5c48aa95097c521e307f84', {u'username': u'dandiw', u'bio': u"don't eat yellow snow", u'website': u'', u'profile_picture': u'https://scontent.cdninstagram.com/t51.2885-19/11371228_1641821646088819_2000909201_a.jpg', u'full_name': u'Dan F', u'id': u'225686819'})
+
+
+CLIENT_ID = 'a2bcad5de7ab400eb16b7cc8d2ff0d24'
+CLIENT_SECRET = '4a0b191e4c8a4c71be5bfa60328f4e3c'
